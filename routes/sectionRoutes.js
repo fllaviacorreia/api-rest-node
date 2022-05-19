@@ -7,6 +7,6 @@ sectionRoutes.post('/', SectionController.createSection)
 sectionRoutes.get('/', SectionController.getAllSections)
 sectionRoutes.get('/:id', SectionController.getSection)
 sectionRoutes.patch('/', SectionController.updateSection)
-sectionRoutes.delete('/', SectionController.deleteSection)
+sectionRoutes.delete('/:id', SectionController.deleteSection)
 
 export default sectionRoutes

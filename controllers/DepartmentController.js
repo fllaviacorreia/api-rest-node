@@ -4,6 +4,7 @@ import Department from '../models/Department.js'
 export default class DepartmentController {
     static async createDepartment(req, res) {
         const { departmentname } = req.body
+        console.log(req.body)
         if (!departmentname) {
             if (
                 req.headers['response-type'] === 'json' ||
@@ -167,7 +168,7 @@ export default class DepartmentController {
         }
     }
     static async deleteDepartment(req, res) {
-        const { id } = req.body
+        const { id } = req.params
         const department = await Department.findOne({ where: { id: id } })
         if (!department) {
             if (

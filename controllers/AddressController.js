@@ -321,7 +321,7 @@ export default class AddressController {
         }
     }
     static async deleteAddress(req, res) {
-        const { id } = req.body
+        const { id } = req.params
         const addressExists = await Address.findOne({ where: { id: id } })
         if (!addressExists) {
             if (

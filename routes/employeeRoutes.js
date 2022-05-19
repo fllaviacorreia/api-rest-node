@@ -7,6 +7,6 @@ employeeRoutes.post('/', EmployeeController.createEmployee)
 employeeRoutes.get('/', EmployeeController.getAllEmployees)
 employeeRoutes.get('/:id', EmployeeController.getEmployee)
 employeeRoutes.patch('/', EmployeeController.updateEmployee)
-employeeRoutes.delete('/', EmployeeController.deleteEmployee)
+employeeRoutes.delete('/:id', EmployeeController.deleteEmployee)
 
 export default employeeRoutes

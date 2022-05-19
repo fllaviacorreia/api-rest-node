@@ -7,6 +7,6 @@ departmentRoutes.post('/', DepartmentController.createDepartment)
 departmentRoutes.get('/', DepartmentController.getAllDepartments)
 departmentRoutes.get('/:id', DepartmentController.getDepartment)
 departmentRoutes.patch('/', DepartmentController.updateDepartment)
-departmentRoutes.delete('/', DepartmentController.deleteDepartment)
+departmentRoutes.delete('/:id', DepartmentController.deleteDepartment)
 
 export default departmentRoutes

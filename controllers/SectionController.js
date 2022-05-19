@@ -177,7 +177,7 @@ export default class SectionController {
         }
     }
     static async deleteSection(req, res) {
-        const { id } = req.body
+        const { id } = req.params
         const section = await Section.findOne({
             where: {
                 id: id

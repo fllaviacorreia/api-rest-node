@@ -302,8 +302,10 @@ export default class ClientController {
     }
     static async getClient(req, res) {
         const { id } = req.params
+        console.log("id: ", id)
         try {
             const client = await Client.findOne({ where: { id: id } })
+            console.log("client: ", client);
             if (!client) {
                 if (
                     req.headers['response-type'] === 'json' ||
@@ -367,7 +369,8 @@ export default class ClientController {
                 first_name: req.body.firstname,
                 last_name: req.body.lastname,
                 cpf: req.body.cpf,
-                birth_date: req.body.birthdate
+                birth_date: req.body.birthdate,
+                active: req.body.active
             }
             const clientUpdated = await Client.update(client, { where: { id: id } })
             if (
@@ -395,7 +398,9 @@ export default class ClientController {
     }
 
     static async deleteClient(req, res) {
-        const { id } = req.body
+        const { id } = req.params
+        console.log("req.body", req.params);
+        console.log("id:",id);
         const client = await Client.findOne({ where: { id: id } })
         if (!client) {
             if (

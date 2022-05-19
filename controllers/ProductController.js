@@ -315,7 +315,8 @@ export default class ProductController {
                 description,
                 technical_information: technicalinformation,
                 quantity,
-                SectionId: sectionid
+                SectionId: sectionid,
+                active: req.body.active
             }
             const productUpdated = await Product.update(product, {
                 where: { id: id }
@@ -344,7 +345,7 @@ export default class ProductController {
         }
     }
     static async deleteProduct(req, res) {
-        const { id } = req.body
+        const { id } = req.params
         const product = await Product.findOne({
             where: {
                 id: id

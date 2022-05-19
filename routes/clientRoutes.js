@@ -7,6 +7,6 @@ clientRoutes.post('/', ClientController.createClient)
 clientRoutes.get('/', ClientController.getAllClient)
 clientRoutes.get('/:id', ClientController.getClient)
 clientRoutes.patch('/', ClientController.updateClient)
-clientRoutes.delete('/', ClientController.deleteClient)
+clientRoutes.delete('/:id', ClientController.deleteClient)
 
 export default clientRoutes

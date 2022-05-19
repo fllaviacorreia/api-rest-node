@@ -240,7 +240,8 @@ export default class EmployeeController {
             const employee = {
                 first_name: req.body.firstname,
                 last_name: req.body.lastname,
-                departmentId: req.body.departmentid
+                departmentId: req.body.departmentid,
+                active: req.body.active
             }
             const employeeUpdated = await Employee.update(employee, {
                 where: { id: id }
@@ -269,7 +270,7 @@ export default class EmployeeController {
         }
     }
     static async deleteEmployee(req, res) {
-        const { id } = req.body
+        const { id } = req.params
         const employee = await Employee.findOne({
             where: {
                 id: id

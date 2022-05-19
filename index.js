@@ -1,5 +1,5 @@
 import express from 'express'
-
+import cors from 'cors'
 import connection from './db/connection.js'
 
 import Client from './models/Client.js'
@@ -20,9 +20,12 @@ import productRoutes from './routes/productRoutes.js'
 import saleRoutes from './routes/saleRoutes.js'
 import sectionRoutes from './routes/sectionRoutes.js'
 
-const port = 3000
+
+const port = 3001
 
 const app = express()
+
+app.use(cors()); //aberto p qualquer dominio
 
 app.use(express.urlencoded({ extended: true }))
 
@@ -36,6 +39,10 @@ app.use('/employee', employeeRoutes)
 app.use('/product', productRoutes)
 app.use('/sale', saleRoutes)
 app.use('/section', sectionRoutes)
+
+app.get('/', function(req, res) {
+    res.send('hello world, backend');
+  });
 
 connection
 // .sync({ force: true })
