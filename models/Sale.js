@@ -15,6 +15,14 @@ const Sale = connection.define('sale', {
     total_value: {
         type: DataTypes.FLOAT,
         allowNull: false
+    },
+    latitude: {
+    	type: DataTypes.STRING,
+        allowNull: false
+    },
+     longitude: {
+    	type: DataTypes.STRING,
+        allowNull: false
     }
 })
 

@@ -8,13 +8,16 @@ import Sale from '../models/Sale.js'
 
 export default class SaleController {
     static async createSale(req, res) {
+    console.log(req.body)
         const {
             paymentmethod,
             installment,
             totalvalue,
             clientid,
             employeeid,
-            products
+            products,
+            latitude,
+            longitude
         } = req.body
         if (!paymentmethod || paymentmethod == '') {
             if (
@@ -162,7 +165,10 @@ export default class SaleController {
                     installment,
                     total_value: totalvalue,
                     ClientId: clientid,
-                    employeeId: employeeid
+                    employeeId: employeeid,
+                    latitude: latitude,
+                    longitude: longitude,
+                    
                 })
                 await linkProductToSale(products, sale)
                 if (
@@ -191,12 +197,13 @@ export default class SaleController {
         try {
             const sales = await Sale.findAll({
                 include: [Client, Employee, Product],
-                raw: true
+              //  raw: true 
             })
             if (
                 req.headers['response-type'] === 'json' ||
                 req.headers['response-type'] === undefined
             ) {
+            console.log(res);
                 return res.status(200).json({ sales })
             } else if (req.headers['response-type'] == 'xml') {
                 res.header('Content-Type', 'application/xml')
@@ -220,7 +227,7 @@ export default class SaleController {
             const sale = await Sale.findOne({
                 where: { id: id },
                 include: [Client, Employee, Product],
-                raw: true
+               // raw: true
             })
             if (!sale) {
                 if (
